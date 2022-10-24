@@ -123,10 +123,10 @@ export default {
 
     async auth() {
       let url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key= AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k';
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key= AIzaSyCgJpHmgdBPviuM0jCugB3Bm_IwpfVJWKI';
       if (this.mode=="signup") {
         url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key= AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key= AIzaSyCgJpHmgdBPviuM0jCugB3Bm_IwpfVJWKI';
       }
       const response = await fetch(url, {
         method: 'POST',
