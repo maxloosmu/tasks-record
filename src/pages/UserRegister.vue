@@ -105,12 +105,6 @@ export default {
         return;
       }
 
-      const formData = {
-        name: "Max",
-        email: "maxloo@smu.edu.sg",
-        password: "admin",
-      };
-
       // store.state.name = this.name.val;
       // store.state.email = this.email.val;
       // store.state.password = this.password.val;
@@ -120,10 +114,41 @@ export default {
       this.$store.state.name = localStorage.getItem('name');
       this.$store.state.email = localStorage.getItem('email');
       this.$store.state.password = localStorage.getItem('password');
+      this.auth();
 
-      this.$emit('register-data', formData);
       this.$router.replace('/work');
     },
+    // https://firebase.google.com/docs/reference/rest/auth
+    // curl 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k' -H 'Content-Type: application/json' --data-binary '{"email":"maxlooo@yahoo.com","password":"PASSWORD","returnSecureToken":true}'
+
+    async auth() {
+      let url =
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key= AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k';
+      if (this.mode=="signup") {
+        url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key= AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k';
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: localStorage.getItem('email'),
+          password: localStorage.getItem('password'),
+          returnSecureToken: true
+        })
+      });
+      const responseData = await response.json();
+      if (!response.ok) {
+        const error = new Error(
+          responseData.message || 'Failed to authenticate. Check your login data.'
+        );
+        console.log(error);
+        throw error;
+      }
+      localStorage.setItem('token', responseData.idToken);
+      localStorage.setItem('userId', responseData.localId);
+      this.$store.state.token = localStorage.getItem('token');
+      this.$store.state.userId = localStorage.getItem('userId');
+    }
   },
 }
 </script>
