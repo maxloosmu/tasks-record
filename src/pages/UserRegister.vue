@@ -31,8 +31,9 @@
       <p v-if="!password.isValid">Password must not be empty.</p>
     </div>
     <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
-    <button>Submit</button>
+    <button>{{ showMode }}</button>
   </form>
+  <button @click="changeMode">{{ switchMode }}</button>
 </template>
 
 <script>
@@ -53,10 +54,32 @@ export default {
         isValid: true,
       },
       formIsValid: true,
+      mode: "login",
     };
   },
-
+  computed: {
+    switchMode() {
+      if (this.mode=="signup") {
+        return "Switch to Login";
+      }
+      else {
+        return "Switch to Signup";
+      }
+    },
+    showMode() {
+      if (this.mode=="signup") {
+        return "Signup";
+      }
+      else {
+        return "Login";
+      }
+    }
+  },
   methods: {
+    changeMode() {
+      if (this.mode=="login") this.mode="signup";
+      else this.mode="login";
+    },
     clearValidity(input) {
       this[input].isValid = true;
     },
@@ -91,9 +114,12 @@ export default {
       // store.state.name = this.name.val;
       // store.state.email = this.email.val;
       // store.state.password = this.password.val;
-      this.$store.state.name = formData.name;
-      this.$store.state.email = formData.email;
-      this.$store.state.password = formData.password;
+      localStorage.setItem('name', this.name.val);
+      localStorage.setItem('email', this.email.val);
+      localStorage.setItem('password', this.password.val);
+      this.$store.state.name = localStorage.getItem('name');
+      this.$store.state.email = localStorage.getItem('email');
+      this.$store.state.password = localStorage.getItem('password');
 
       this.$emit('register-data', formData);
       this.$router.replace('/work');

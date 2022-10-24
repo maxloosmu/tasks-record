@@ -1,5 +1,26 @@
 <template>
-  <p>{{ this.$store.state.name }}</p>
-  <p>{{ this.$store.state.email }}</p>
-  <p>{{ this.$store.state.password }}</p>
+  <button @click="logout">Logout</button>
+  <p>{{ name }}</p>
+  <p>{{ email }}</p>
+  <p>{{ password }}</p>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: localStorage.getItem('name'),
+      email: localStorage.getItem('email'),
+      password: localStorage.getItem('password'),
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+      this.$router.replace('/register');
+    }
+  }
+};
+</script>
