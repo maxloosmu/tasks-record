@@ -1,10 +1,10 @@
 <template>
   <button @click="logout">Logout</button>
-  <p>{{ name }}</p>
-  <p>{{ email }}</p>
-  <p>{{ password }}</p>
-  <p>{{ userId }}</p>
-  <p>{{ token }}</p>
+  <p>name: {{ name }}</p>
+  <p>email: {{ email }}</p>
+  <p>password: {{ password }}</p>
+  <p>userId: {{ userId }}</p>
+  <p>token: {{ token }}</p>
 </template>
 
 <script>
