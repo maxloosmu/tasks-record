@@ -5,6 +5,8 @@
   <p>password: {{ password }}</p>
   <p>userId: {{ userId }}</p>
   <p>token: {{ token }}</p>
+  <p>error: {{ error }}</p>
+  <p>response: {{ response }}</p>
 </template>
 
 <script>
@@ -15,6 +17,8 @@ export default {
       email: localStorage.getItem('email'),
       password: localStorage.getItem('password'),
       token: localStorage.getItem('token'),
+      error: this.$store.state.error,
+      response: this.$store.state.response,
     }
   },
   computed: {
@@ -29,7 +33,7 @@ export default {
       localStorage.removeItem('password');
       localStorage.removeItem('token');
       localStorage.removeItem('userId');
-      this.$router.replace('/register');
+      this.$router.replace('/login');
     }
   }
 };

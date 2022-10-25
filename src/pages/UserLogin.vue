@@ -31,11 +31,14 @@
       <p v-if="!password.isValid">Password must not be empty.</p>
     </div>
     <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
-    <button>Submit</button>
+    <button>{{ showMode }}</button>
   </form>
+  <button @click="changeMode">{{ switchMode }}</button>
 </template>
 
 <script>
+import store from '../store';
+
 export default {
   emits: ['register-data'],
   data() {
@@ -53,10 +56,32 @@ export default {
         isValid: true,
       },
       formIsValid: true,
+      mode: "login",
     };
   },
-
+  computed: {
+    switchMode() {
+      if (this.mode=="signup") {
+        return "Switch to Login";
+      }
+      else {
+        return "Switch to Signup";
+      }
+    },
+    showMode() {
+      if (this.mode=="signup") {
+        return "Signup";
+      }
+      else {
+        return "Login";
+      }
+    }
+  },
   methods: {
+    changeMode() {
+      if (this.mode=="login") this.mode="signup";
+      else this.mode="login";
+    },
     clearValidity(input) {
       this[input].isValid = true;
     },
@@ -82,22 +107,28 @@ export default {
         return;
       }
 
-      const formData = {
-        name: "Max",
-        email: "maxloo@smu.edu.sg",
-        password: "admin",
-      };
-
       // store.state.name = this.name.val;
       // store.state.email = this.email.val;
       // store.state.password = this.password.val;
-      this.$store.state.name = formData.name;
-      this.$store.state.email = formData.email;
-      this.$store.state.password = formData.password;
+      localStorage.setItem('name', this.name.val);
+      localStorage.setItem('email', this.email.val);
+      localStorage.setItem('password', this.password.val);
+      this.$store.state.name = localStorage.getItem('name');
+      this.$store.state.email = localStorage.getItem('email');
+      this.$store.state.password = localStorage.getItem('password');
+      // this.auth();
+      try {
+        store.commit("auth", this.mode);
+      } catch (e) {
+        this.$store.state.error = e;
+      }
 
-      this.$emit('register-data', formData);
       this.$router.replace('/work');
     },
+    // https://firebase.google.com/docs/reference/rest/auth
+    // curl 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k' -H 'Content-Type: application/json' --data-binary '{"email":"maxlooo@yahoo.com","password":"PASSWORD","returnSecureToken":true}'
+
+    
   },
 }
 </script>

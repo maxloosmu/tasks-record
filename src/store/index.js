@@ -9,6 +9,8 @@ const store = createStore({
     return {
       userId: null,
       token: null,
+      error: null,
+      response: null,
       mode: "login",
       name: "",
       email: "",
