@@ -125,10 +125,9 @@ export default {
 
       this.$router.replace('/work');
     },
-    // https://firebase.google.com/docs/reference/rest/auth
-    // curl 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAk1ueCLjDDWCNrt_23o5A4RCfeaYIlN6k' -H 'Content-Type: application/json' --data-binary '{"email":"maxlooo@yahoo.com","password":"PASSWORD","returnSecureToken":true}'
 
-    
+
+
   },
 }
 </script>
