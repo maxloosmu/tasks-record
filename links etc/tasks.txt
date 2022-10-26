@@ -1,0 +1,12 @@
+i've just reviewed the codebase, and i still find it a big problem, but with the difference as compared to last time, i now understand the overall structure, partly due to vue.  there are still many aspects i still have trouble with.
+
+i'm now looking at slotprops in vue, i'll need to look at mapGetters from Vuex, this.$router.options.routes, these are all Vue, so i should be able to find some answers. 
+
+the main problem is that i see some aspects from the fringes of vue.  firstly, there's purescript.  secondly, i think there's the SCSS-Bulma-@fortawesome-FontAwesomeIcon category of items.  there's also a strange use of the @ symbol in an import statement for a vue component - i never learnt that.  lastly, there's a huge d3 import...
+
+i'm now reviewing some previous parts of the course now with regards to slots, but will likely have to rely on the internet to find out more about the rest of the vue aspects first.
+
+after that, i'll look closer at the SCSS etc category of items.  purescript and d3 are going to take some time to learn...
+
+
+
