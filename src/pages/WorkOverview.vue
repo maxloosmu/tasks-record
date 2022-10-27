@@ -9,7 +9,7 @@
     <p>error: {{ error }}</p>
     <p>response: {{ response }}</p>
   </section>
-  <record-tasks v-if="!!this.token"></record-tasks>
+  <RecordTasks v-if="!!this.token"></RecordTasks>
 </template>
 
 <script>
