@@ -19,6 +19,15 @@ npm i --package-lock-only --force
 npm audit fix --force
 npm install eslint-plugin-vue -u
 
+npm i --save @fortawesome/free-solid-svg-icons
+npm install --save font-awesome
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/vue-fontawesome@latest-3
+
+
+
+
+
 
 npm install --save vuex
 npm install vuex@next --save

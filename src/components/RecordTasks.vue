@@ -9,7 +9,7 @@
   />
   <ol>
     <li v-for="task in tasksList" :key="task">
-      {{ task }} <button @click="removeTask(task)">remove</button>
+      {{ task }} <button @click="removeTask(task)"><FontAwesomeIcon :icon="icon" /> remove</button>
     </li>
   </ol>
   <p><button @click="saveTasks">Save Tasks</button></p>
@@ -19,10 +19,17 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 export default {
+  components: {
+    FontAwesomeIcon
+  },
   data() {
     return {
       tasksList: [],
+      icon: faTimes,
     };
   },
   computed: {
@@ -58,6 +65,7 @@ export default {
           mergedString += allItems[i];
         }
         this.tasksList = mergedString.split(",");
+        if (this.tasksList.length > 3) alert("You have too many tasks to do!");
       }
       else this.tasksList = [];
     },
