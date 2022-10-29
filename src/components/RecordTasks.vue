@@ -49,25 +49,15 @@ export default {
       }
     },
     saveTasks() {
-      if (this.tasksList.length > 0) {
-        localStorage.setItem('tasksList', this.tasksList);
-      }
+      let jsonString = JSON.stringify(this.tasksList);
+      localStorage.setItem('tasksList', jsonString);
     },
     clearTasks() {
       this.tasksList = [];
     },
     recallTasks() {
-      let allItems = localStorage.getItem('tasksList');
-      // console.log(allItems);
-      if (allItems != null) {
-        let mergedString = "";
-        for (let i in allItems) {
-          mergedString += allItems[i];
-        }
-        this.tasksList = mergedString.split(",");
-        if (this.tasksList.length > 3) alert("You have too many tasks to do!");
-      }
-      else this.tasksList = [];
+      let jsonString = localStorage.getItem('tasksList');
+      this.tasksList = JSON.parse(jsonString);
     },
     eraseTasks() {
       localStorage.removeItem('tasksList');
