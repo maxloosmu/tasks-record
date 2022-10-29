@@ -1,14 +1,15 @@
 <template>
-  <h2>Enter your 3 primary tasks for today:</h2>
+  <h2>hi {{ name }}, add your 3 primary tasks for today</h2>
+  <h3>Just press "Enter" or "Go" or click "Add Task" after typing your task</h3>
   <input
     type="text"
     id="tasksInput"
     ref="tasksInput"
     @keypress.enter="addTask"
-    v-if="this.taskListLengthTwo"
-  />
+    v-if="this.taskSelectionLengthTwo"
+  /> <button @click="addTaskButton">Add Task</button>
   <ol>
-    <li v-for="task in tasksList" :key="task">
+    <li v-for="task in taskSelection" :key="task">
       {{ task }} <button @click="removeTask(task)"><FontAwesomeIcon :icon="icon" /> remove</button>
     </li>
   </ol>
@@ -28,39 +29,45 @@ export default {
   },
   data() {
     return {
-      tasksList: [],
+      name: localStorage.getItem('name'),
+      taskSelection: [],
       icon: faTimes,
     };
   },
   computed: {
-    taskListLengthTwo() {
-      return this.tasksList.length < 3;
+    taskSelectionLengthTwo() {
+      return this.taskSelection.length < 3;
     },
   },
   methods: {
     addTask(event) {
-      this.tasksList.push(event.target.value);
+      this.taskSelection.push(event.target.value);
       this.$refs.tasksInput.value = "";
     },
+    addTaskButton() {
+      this.taskSelection.push(this.$refs.tasksInput.value);
+      this.$refs.tasksInput.value = "";
+      this.$refs.tasksInput.focus();
+    },
     removeTask(task) {
-      const index = this.tasksList.indexOf(task);
+      const index = this.taskSelection.indexOf(task);
       if (index > -1) {
-        this.tasksList.splice(index, 1);
+        this.taskSelection.splice(index, 1);
       }
     },
     saveTasks() {
-      let jsonString = JSON.stringify(this.tasksList);
-      localStorage.setItem('tasksList', jsonString);
+      let jsonString = JSON.stringify(this.taskSelection);
+      localStorage.setItem('taskSelection', jsonString);
     },
     clearTasks() {
-      this.tasksList = [];
+      this.taskSelection = [];
     },
     recallTasks() {
-      let jsonString = localStorage.getItem('tasksList');
-      this.tasksList = JSON.parse(jsonString);
+      let jsonString = localStorage.getItem('taskSelection');
+      this.taskSelection = JSON.parse(jsonString);
     },
     eraseTasks() {
-      localStorage.removeItem('tasksList');
+      localStorage.removeItem('taskSelection');
     }
   },
 };
