@@ -65,7 +65,9 @@ export default {
     },
     recallTasks() {
       let jsonString = localStorage.getItem('taskSelection');
-      this.taskSelection = JSON.parse(jsonString);
+      if (jsonString) {
+        this.taskSelection = JSON.parse(jsonString);
+      }
     },
     eraseTasks() {
       localStorage.removeItem('taskSelection');
