@@ -54,6 +54,7 @@ export default {
       if (index > -1) {
         this.taskSelection.splice(index, 1);
       }
+      this.$refs.tasksInput.focus();
     },
     saveTasks() {
       let jsonString = JSON.stringify(this.taskSelection);
