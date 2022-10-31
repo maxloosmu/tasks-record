@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>URL</key>
+	<string>https://search.library.smu.edu.sg/discovery/search?query=any,contains,d3&amp;tab=BooksVideos&amp;search_scope=BooksVideos&amp;vid=65SMU_INST:SMU_NUI&amp;facet=rtype,include,videos&amp;offset=0</string>
+</dict>
+</plist>
