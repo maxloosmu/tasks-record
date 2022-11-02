@@ -1,0 +1,4 @@
+To update:
+- move tasks up and down
+- show both signup and login buttons to simplify
+- create error message for failed logins

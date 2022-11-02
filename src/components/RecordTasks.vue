@@ -1,16 +1,13 @@
 <template>
   <h2>hi {{ name }}, add your 3 primary tasks for today</h2>
   <h3>Just press "Enter" or "Go" or click "Add Task" after typing your task</h3>
-  <input
-    type="text"
-    id="tasksInput"
-    ref="tasksInput"
-    @keypress.enter="addTask"
-    v-if="this.taskSelectionLengthTwo"
-  /> <button @click="addTaskButton">Add Task</button>
+  <input type="text" id="tasksInput" ref="tasksInput" @keypress.enter="addTask" v-if="this.taskSelectionLengthTwo" />
+  <button @click="addTaskButton">Add Task</button>
   <ol>
     <li v-for="task in taskSelection" :key="task">
-      {{ task }} <button @click="removeTask(task)"><FontAwesomeIcon :icon="icon" /> remove</button>
+      {{ task }} <button @click="removeTask(task)">
+        <FontAwesomeIcon :icon="icon" /> remove
+      </button>
     </li>
   </ol>
   <p><button @click="saveTasks">Save Tasks</button></p>
