@@ -2,3 +2,6 @@ To update:
 - move tasks up and down
 - show both signup and login buttons to simplify
 - create error message for failed logins
+- create 4 sets of tasks: in progress, to do, to do at later date, pool of optional tasks
+
+
