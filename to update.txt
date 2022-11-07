@@ -2,6 +2,8 @@ To update:
 - move tasks up and down
 - show both signup and login buttons to simplify
 - create error message for failed logins
-- create 4 sets of tasks: in progress, to do, to do at later date, pool of optional tasks
-
-
+- create 4 sets of tasks: in progress, to do next, to do at later date, pool of optional tasks
+- create task in progress time count
+- save tasks both on device and on server
+- create trial page for trying features without saving
+ 
