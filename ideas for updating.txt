@@ -6,4 +6,8 @@ To update:
 - create task in progress time count
 - save tasks both on device and on server
 - create trial page for trying features without saving
- 
+- check firebase for free web hosting without expiry
+- vue how to export and save data to text file
+
+
+
