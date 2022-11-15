@@ -12,10 +12,13 @@ To update:
 
 Things To Do Today
 to-do-today
+todotoday@gmail.com
+- authenticate using only name
 - auto load items from cookies
 - input field
 - remove item
 - move item up, down
 - save all in cookies
+- save all at server
 - clear all items
 
