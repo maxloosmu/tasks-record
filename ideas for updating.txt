@@ -10,4 +10,12 @@ To update:
 - vue how to export and save data to text file
 - setup an About page describing how the tool works
 
+Things To Do Today
+to-do-today
+- auto load items from cookies
+- input field
+- remove item
+- move item up, down
+- save all in cookies
+- clear all items
 
